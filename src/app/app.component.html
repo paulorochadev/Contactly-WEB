@@ -1,3 +1,9 @@
-<h1 class="text-3xl font-bold underline">
-  This is App HTML
-</h1>
+@if (contacts$ | async;as contacts) {
+  @if (contacts.length > 0) {
+    @for (item of contacts; track $index) {
+      <p>{{ item.name }}</p>
+    }
+  } @else {
+    <p>No contacts found...</p>
+  }
+}
