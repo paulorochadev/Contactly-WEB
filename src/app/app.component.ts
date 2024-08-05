@@ -45,6 +45,16 @@ export class AppComponent {
       })
   }
 
+  onDelete(id: string){
+    this.http.delete(`https://localhost:7234/api/Contacts/${id}`)
+      .subscribe({
+        next: (value) => {
+          alert('Item Deleted!')
+          this.contacts$ = this.getContacts()
+        }
+      })
+  }
+
   private getContacts(): Observable<Contact[]> {
     return this.http.get<Contact[]>('https://localhost:7234/api/Contacts')
   }
