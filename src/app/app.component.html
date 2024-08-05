@@ -1,6 +1,37 @@
 <div class="flex h-screen">
   <div class="w-[50%]">
+    <form (ngSubmit)="onFormSubmit()" [formGroup]="contactsForm" class="px-4">
+      <h1 class="py-10 font-extrabold text-5x1">
+        Contactly
+      </h1>
 
+      <div class="mt-2">
+        <label for="name" class="font-bold">Name</label>
+        <input type="text" class="w-full p-2 border-2 rounded-sm mt-2" formControlName="name">
+      </div>
+
+      <div class="mt-2">
+        <label for="email" class="font-bold">Email</label>
+        <input type="email" class="w-full p-2 border-2 rounded-sm mt-2" formControlName="email">
+      </div>
+
+      <div class="mt-2">
+        <label for="phone" class="font-bold">Phone</label>
+        <input type="text" class="w-full p-2 border-2 rounded-sm mt-2" formControlName="phone">
+      </div>
+
+      <div class="mt-2">
+        <label for="favorite" class="flex items-center font-bold">
+          <input type="checkbox" class="h-4 w-4" formControlName="favorite">
+          <span>Favorite</span>
+        </label>
+      </div>
+
+      <div class="mt-2">
+        <button type="submit" class="bg-slate-800 text-white px-4 py-2 rounded-sm w-full">Add</button>
+      </div>
+
+    </form>
   </div>
   <div class="overflow-auto w-[50%]">
     @if (contacts$ | async;as contacts) {
